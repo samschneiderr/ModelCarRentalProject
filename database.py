@@ -1,8 +1,11 @@
 import json
 
 def load_data():
-    with open("data.json", "r") as f:
-        return json.load(f)
+    try:
+        with open("data.json", "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {"users": [], "cars": [], "bookings": []}
 
 def save_data(data):
     with open("data.json", "w") as f:
