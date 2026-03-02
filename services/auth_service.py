@@ -1,4 +1,4 @@
-from database import load_data, save_data
+from ..database import load_data, save_data
 
 class AuthService:
     def __init__(self):
