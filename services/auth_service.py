@@ -6,7 +6,6 @@ class AuthService:
 
     def register(self, username, password, role, email):
         data = load_data()
-        # check duplicate
         for user in data["users"]:
             if user["username"] == username:
                 return False
