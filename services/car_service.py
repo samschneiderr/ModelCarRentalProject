@@ -1,4 +1,4 @@
-class car_service:
+class CarService:
     def __init__(self):
         # initialization
         pass
