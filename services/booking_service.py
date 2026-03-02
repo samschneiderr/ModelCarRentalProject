@@ -50,3 +50,22 @@ class BookingService:
 
         print("Booking confirmed.")
         return True
+        
+    def pick_up_car(self, booking_id):
+        data = load_data()
+
+        booking = next(b for b in data["bookings"] if b["booking_id"] == booking_id)
+        booking["status"] = BookingStatus.ACTIVE.value
+        save_data(data)
+
+    def return_car(self, booking_id, mileage):
+        data = load_data()
+
+        booking = next(b for b in data["bookings"] if b["booking_id"] == booking_id)
+        booking["status"] = BookingStatus.COMPLETED.value
+        booking["mileage"] = mileage
+
+        car = next(c for c in data["cars"] if c["car_id"] == booking["car_id"])
+        car["status"] = "Available"
+
+        save_data(data)
